@@ -1,4 +1,4 @@
-package com.application.sxm.revie;
+package com.application.sxm.revie.activity;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.application.sxm.revie.R;
 import com.application.sxm.revie.util.BottomNavigationViewHelper;
 
 public class MainTabActivity extends AppCompatActivity {
