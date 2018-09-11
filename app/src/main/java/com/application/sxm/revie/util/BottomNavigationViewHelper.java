@@ -8,7 +8,7 @@ import android.util.Log;
 import java.lang.reflect.Field;
 
 /**
- * 底部导航比例调整
+ * BottomNavigationView底部导航比例调整
  * Created by shixiaoming on 18/9/3.
  */
 public class BottomNavigationViewHelper {
