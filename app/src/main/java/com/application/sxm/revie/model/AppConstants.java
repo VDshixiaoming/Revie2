@@ -6,5 +6,5 @@ package com.application.sxm.revie.model;
  */
 public class AppConstants {
 
-    public static final String DOUBAN_BASE_URL = "https://api.douban.com/v2/movie/";//豆瓣API地址前缀
+    public static final String DOUBAN_BASE_URL = "Https://api.douban.com/";//豆瓣API地址前缀
 }

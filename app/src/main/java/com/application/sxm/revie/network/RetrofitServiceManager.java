@@ -48,6 +48,9 @@ public class RetrofitServiceManager {
      * 获取Service
      */
     public <T> T create(Class<T> service){
+        if (mRetrofit == null) {
+            createOkHttpClient();
+        }
         return mRetrofit.create(service);
     }
 
@@ -61,6 +64,7 @@ public class RetrofitServiceManager {
         builder.connectTimeout(CONNECT_TIME_OUT, TimeUnit.SECONDS);
         builder.writeTimeout(IO_TIME_OUT, TimeUnit.SECONDS);
         builder.readTimeout(IO_TIME_OUT, TimeUnit.SECONDS);
+        builder.retryOnConnectionFailure(true);//重试
 
         //设置拦截器参数
         HttpBaseInterceptor baseInterceptor = new HttpBaseInterceptor.Builder()
