@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.application.sxm.revie.R;
 import com.application.sxm.revie.adapter.BasePagerAdapter;
 import com.application.sxm.revie.fragment.BaseFragment;
@@ -20,6 +21,7 @@ import butterknife.BindView;
  * 首页
  * Created by shixiaoming on 18/9/10.
  */
+@Route(path = "/main/maintab", group = "framework")
 public class MainTabActivity extends BaseActivity {
 
     @BindView(R.id.viewpager)
