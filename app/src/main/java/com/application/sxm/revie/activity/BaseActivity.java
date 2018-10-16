@@ -23,8 +23,8 @@ public abstract class BaseActivity extends AppCompatActivity{
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //初始化View
         initView();
-        //初始化数据
-        initData();
+//        //初始化数据
+//        initData();
     }
 
 
@@ -34,6 +34,6 @@ public abstract class BaseActivity extends AppCompatActivity{
     //初始化View
     public abstract void initView();
 
-    //初始化数据
-    public abstract void initData();
+//    //初始化数据
+//    public abstract void initData();
 }

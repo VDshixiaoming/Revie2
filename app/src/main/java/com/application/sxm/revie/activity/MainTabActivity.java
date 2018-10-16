@@ -26,7 +26,7 @@ import butterknife.BindView;
 public class MainTabActivity extends BaseActivity {
 
     @Autowired
-    int currentPage; //默认页面
+    int page; //默认页面
 
     @BindView(R.id.viewpager)
     ForbidSlidViewPager viewPager;
@@ -71,11 +71,6 @@ public class MainTabActivity extends BaseActivity {
         initViewPager();
     }
 
-    @Override
-    public void initData() {
-
-    }
-
     private void initViewPager(){
         List<BaseFragment> fragments = new ArrayList<>();
         fragments.add(TabFragmentFactory.getInstance().getHomeFragment());
@@ -86,7 +81,7 @@ public class MainTabActivity extends BaseActivity {
         BasePagerAdapter adapter = new BasePagerAdapter(getSupportFragmentManager(), fragments);
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(4);
-        viewPager.setCurrentItem(currentPage);
+        viewPager.setCurrentItem(page);
     }
 
 }

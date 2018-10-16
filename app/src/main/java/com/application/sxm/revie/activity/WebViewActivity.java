@@ -23,11 +23,6 @@ public class WebViewActivity extends BaseActivity{
     }
 
     @Override
-    public void initData() {
-
-    }
-
-    @Override
     public void initView() {
         mWebView.loadUrl("file:///android_asset/url_route_test.html");
     }
