@@ -26,6 +26,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".activity.WebViewActivity"></activity>
+
         <activity android:name=".activity.URLRouterActivity">
             <!-- Schame -->
             <intent-filter>

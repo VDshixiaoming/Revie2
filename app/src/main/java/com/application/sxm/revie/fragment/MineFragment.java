@@ -1,12 +1,21 @@
 package com.application.sxm.revie.fragment;
 
+import android.view.View;
+import android.widget.TextView;
+
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.application.sxm.revie.R;
+
+import butterknife.BindView;
 
 /**
  * 我的fragment
  * Created by shixiaoming on 18/9/11.
  */
 public class MineFragment extends BaseFragment{
+
+    @BindView(R.id.title)
+    TextView title;
 
     @Override
     public int getContentViewRes() {
@@ -15,7 +24,14 @@ public class MineFragment extends BaseFragment{
 
     @Override
     public void initView() {
-
+        title.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance()
+                        .build("/main/webview")
+                        .navigation();
+            }
+        });
     }
 
     @Override
