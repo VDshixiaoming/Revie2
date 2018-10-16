@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.application.sxm.revie.R;
 import com.application.sxm.revie.adapter.BasePagerAdapter;
@@ -21,8 +22,11 @@ import butterknife.BindView;
  * 首页
  * Created by shixiaoming on 18/9/10.
  */
-@Route(path = "/main/maintab", group = "framework")
+@Route(path = "/main/maintab")
 public class MainTabActivity extends BaseActivity {
+
+    @Autowired
+    int currentPage; //默认页面
 
     @BindView(R.id.viewpager)
     ForbidSlidViewPager viewPager;
@@ -82,7 +86,7 @@ public class MainTabActivity extends BaseActivity {
         BasePagerAdapter adapter = new BasePagerAdapter(getSupportFragmentManager(), fragments);
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(4);
-        viewPager.setCurrentItem(0);
+        viewPager.setCurrentItem(currentPage);
     }
 
 }
