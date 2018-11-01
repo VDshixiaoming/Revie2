@@ -1,5 +1,6 @@
 package com.application.sxm.revie.fragment;
 
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -34,7 +35,8 @@ public class HomeFragment extends BaseFragment{
 
     @Override
     public void initView() {
-        mRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+        final GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 3);
+        mRecycler.setLayoutManager(layoutManager);
         adapter = new MultiTypeAdapter();
         adapter.register(MovieItemBean.class, new HomeViewBinder());
         mRecycler.setAdapter(adapter);
