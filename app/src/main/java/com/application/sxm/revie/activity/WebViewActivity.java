@@ -1,9 +1,9 @@
 package com.application.sxm.revie.activity;
 
-import android.os.Bundle;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.application.sxm.revie.R;
 import com.tencent.smtt.sdk.WebView;
 
@@ -19,7 +19,7 @@ public class WebViewActivity extends BaseActivity{
     @BindView(R.id.webview)
     WebView mWebView;
 
-    @Autowired
+    @Autowired(name = "h5Url")
     String mLoadUrl;
 
     @Override
@@ -29,10 +29,7 @@ public class WebViewActivity extends BaseActivity{
 
     @Override
     public void initView() {
-        Bundle bundle = getIntent().getExtras();
-        if (bundle != null) {
-            mLoadUrl = getIntent().getExtras().getString("url");
-        }
+        ARouter.getInstance().inject(this);
 
         mWebView.loadUrl(mLoadUrl);
     }

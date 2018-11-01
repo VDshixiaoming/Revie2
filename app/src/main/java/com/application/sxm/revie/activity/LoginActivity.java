@@ -1,12 +1,11 @@
 package com.application.sxm.revie.activity;
 
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.application.sxm.revie.R;
 
 import butterknife.BindView;
@@ -34,10 +33,7 @@ public class LoginActivity extends BaseActivity{
 
     @Override
     public void initView() {
-        Bundle bundle = getIntent().getExtras();
-        if (bundle != null) {
-            account = getIntent().getExtras().getString("account");
-        }
+        ARouter.getInstance().inject(this);
         if (!TextUtils.isEmpty(account)) {
             passwordTv.requestFocus();
         }

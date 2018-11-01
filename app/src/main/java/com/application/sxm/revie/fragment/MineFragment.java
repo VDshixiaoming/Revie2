@@ -1,14 +1,14 @@
 package com.application.sxm.revie.fragment;
 
-import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.application.sxm.revie.R;
 import com.application.sxm.revie.model.AppConstants;
+import com.application.sxm.revie.util.HybridClient;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * 我的fragment
@@ -19,6 +19,9 @@ public class MineFragment extends BaseFragment{
     @BindView(R.id.title)
     TextView title;
 
+    @BindView(R.id.url_link)
+    View link;
+
     @Override
     public int getContentViewRes() {
         return R.layout.revie_fragment_mine;
@@ -26,17 +29,19 @@ public class MineFragment extends BaseFragment{
 
     @Override
     public void initView() {
-        final Bundle bundle = new Bundle();
-        bundle.putString("url", AppConstants.LOCAL_HTML_TEST);
-        title.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ARouter.getInstance()
-                        .build("/main/webview")
-                        .with(bundle)
-                        .navigation();
-            }
-        });
+
+    }
+
+    @OnClick({R.id.title, R.id.url_link})
+    public void onViewClick(View v) {
+        switch (v.getId()) {
+            case R.id.title:
+                HybridClient.jumpToH5(AppConstants.LOCAL_HTML_TEST);
+                break;
+            case R.id.url_link:
+                HybridClient.jumpToH5("http://3g.qq.com");
+                break;
+        }
     }
 
     @Override
