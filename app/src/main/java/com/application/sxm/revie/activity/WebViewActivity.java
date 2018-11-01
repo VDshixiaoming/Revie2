@@ -1,9 +1,11 @@
 package com.application.sxm.revie.activity;
 
-import android.webkit.WebView;
+import android.os.Bundle;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.application.sxm.revie.R;
+import com.tencent.smtt.sdk.WebView;
 
 import butterknife.BindView;
 
@@ -17,6 +19,9 @@ public class WebViewActivity extends BaseActivity{
     @BindView(R.id.webview)
     WebView mWebView;
 
+    @Autowired
+    String mLoadUrl;
+
     @Override
     public int getContentViewRes() {
         return R.layout.revie_webview_activity;
@@ -24,6 +29,11 @@ public class WebViewActivity extends BaseActivity{
 
     @Override
     public void initView() {
-        mWebView.loadUrl("file:///android_asset/url_route_test.html");
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            mLoadUrl = getIntent().getExtras().getString("url");
+        }
+
+        mWebView.loadUrl(mLoadUrl);
     }
 }

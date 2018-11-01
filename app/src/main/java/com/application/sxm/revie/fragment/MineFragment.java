@@ -1,10 +1,12 @@
 package com.application.sxm.revie.fragment;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.application.sxm.revie.R;
+import com.application.sxm.revie.model.AppConstants;
 
 import butterknife.BindView;
 
@@ -24,11 +26,14 @@ public class MineFragment extends BaseFragment{
 
     @Override
     public void initView() {
+        final Bundle bundle = new Bundle();
+        bundle.putString("url", AppConstants.LOCAL_HTML_TEST);
         title.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ARouter.getInstance()
                         .build("/main/webview")
+                        .with(bundle)
                         .navigation();
             }
         });
