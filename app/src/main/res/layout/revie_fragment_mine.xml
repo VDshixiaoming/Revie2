@@ -28,4 +28,14 @@
         app:layout_constraintTop_toBottomOf="@+id/title"
         />
 
+    <TextView
+        android:id="@+id/native_link"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="arouter://revie/main/login?account=123456789"
+        app:layout_constraintTop_toBottomOf="@+id/url_link"
+        />
+
 </android.support.constraint.ConstraintLayout>

@@ -20,7 +20,10 @@ public class MineFragment extends BaseFragment{
     TextView title;
 
     @BindView(R.id.url_link)
-    View link;
+    TextView link;
+
+    @BindView(R.id.native_link)
+    TextView nativeLink;
 
     @Override
     public int getContentViewRes() {
@@ -32,14 +35,17 @@ public class MineFragment extends BaseFragment{
 
     }
 
-    @OnClick({R.id.title, R.id.url_link})
+    @OnClick({R.id.title, R.id.url_link, R.id.native_link})
     public void onViewClick(View v) {
         switch (v.getId()) {
             case R.id.title:
-                HybridClient.jumpToH5(AppConstants.LOCAL_HTML_TEST);
+                HybridClient.commonJump(AppConstants.LOCAL_HTML_TEST);
                 break;
             case R.id.url_link:
-                HybridClient.jumpToH5("http://3g.qq.com");
+                HybridClient.commonJump(link.getText().toString());
+                break;
+            case R.id.native_link:
+                HybridClient.commonJump(nativeLink.getText().toString());
                 break;
         }
     }
