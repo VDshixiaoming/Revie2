@@ -1,18 +1,16 @@
 package com.application.sxm.revie.activity;
 
 
-import android.util.Log;
+import android.support.v7.app.ActionBar;
 import android.view.KeyEvent;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.application.sxm.revie.R;
-import com.application.sxm.revie.model.AppConstants;
-import com.tencent.smtt.sdk.WebChromeClient;
-import com.tencent.smtt.sdk.WebSettings;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import com.application.sxm.revie.widget.RevieWebView;
 
 import butterknife.BindView;
 
@@ -21,13 +19,15 @@ import butterknife.BindView;
  * Created by shixiaoming on 18/10/12.
  */
 @Route(path = "/main/webview")
-public class WebViewActivity extends BaseActivity{
+public class WebViewActivity extends BaseActivity implements RevieWebView.WebTitleCallback{
 
-    @BindView(R.id.webview)
-    WebView mWebView;
+    @BindView(R.id.container)
+    FrameLayout mContainer;
 
     @Autowired(name = "h5Url")
     String mLoadUrl;
+
+    private RevieWebView mWebView;
 
     @Override
     public int getContentViewRes() {
@@ -37,32 +37,36 @@ public class WebViewActivity extends BaseActivity{
     @Override
     public void initView() {
         ARouter.getInstance().inject(this);
+        showBack();
         initWebView();
     }
 
     private void initWebView() {
-        WebSettings settings = mWebView.getSettings();
-        settings.setJavaScriptEnabled(true);
+        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT
+                , ViewGroup.LayoutParams.MATCH_PARENT);
+        mWebView = new RevieWebView(this);
+        mContainer.addView(mWebView, layoutParams);
+        mWebView.setWebViewCallback(this);
         mWebView.loadUrl(mLoadUrl);
-        mWebView.setWebViewClient(new WebViewClient() {
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView webView, String url) {
-                webView.loadUrl(url);
-                return true;
-            }
+    }
 
-            @Override
-            public void onReceivedError(WebView webView, int i, String s, String s1) {
-                Log.i(AppConstants.LOG_WEB_MSG, "网页加载失败！");
-            }
-        });
-        //进度条
-        mWebView.setWebChromeClient(new WebChromeClient() {
-            @Override
-            public void onProgressChanged(WebView webView, int i) {
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mWebView.onResume();
+        mWebView.resumeTimers();
+    }
 
-            }
-        });
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mWebView.onPause();
+        mWebView.pauseTimers();
+    }
+
+    @Override
+    public void onReceivedTitle(String title) {
+        setTitle(title);
     }
 
     @Override
@@ -87,4 +91,13 @@ public class WebViewActivity extends BaseActivity{
         }
         return super.onKeyDown(keyCode, event);
     }
+
+    protected void showBack() {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(R.mipmap.revie_ic_back_white);
+        }
+    }
+
 }

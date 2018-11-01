@@ -11,6 +11,7 @@ public class HybridClient {
 
     public static final String HTTP = "http:";
     public static final String HTTPS = "https:";
+    public static final String FILE = "file:";
     public static final String AROUTER = "arouter:";
 
     /**
@@ -19,7 +20,7 @@ public class HybridClient {
      * @param url
      */
     public static void commonJump(@NonNull String url) {
-        if (url.startsWith(HTTP) || url.startsWith(HTTPS)) {
+        if (url.startsWith(HTTP) || url.startsWith(HTTPS) || url.startsWith(FILE)) {
             RevieRoute.toWebView(url);
         } else if (url.startsWith(AROUTER)) {
             Uri uri = Uri.parse(url);

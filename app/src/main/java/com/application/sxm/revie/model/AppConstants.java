@@ -11,6 +11,7 @@ public class AppConstants {
      * 字符常量
      */
     public static final String H5_URL = "h5Url";
+    public static final String CACHE_DIR_H5 = "cache_h5";//webview缓存目录
 
     /**
      * URL
