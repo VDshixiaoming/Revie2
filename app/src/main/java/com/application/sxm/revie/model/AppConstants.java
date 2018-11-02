@@ -6,6 +6,10 @@ package com.application.sxm.revie.model;
  */
 public class AppConstants {
 
+    /**
+     * int
+     */
+    public static final int EVENT_ID_LOGIN = 1001;//登录成功
 
     /**
      * 字符常量

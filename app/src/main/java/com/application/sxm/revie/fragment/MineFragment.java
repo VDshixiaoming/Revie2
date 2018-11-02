@@ -5,7 +5,13 @@ import android.widget.TextView;
 
 import com.application.sxm.revie.R;
 import com.application.sxm.revie.model.AppConstants;
+import com.application.sxm.revie.model.EventBusEvent;
+import com.application.sxm.revie.model.LoginResponse;
+import com.application.sxm.revie.util.EventBusUtil;
 import com.application.sxm.revie.util.HybridClient;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -52,6 +58,26 @@ public class MineFragment extends BaseFragment{
 
     @Override
     public void initData() {
+        EventBusUtil.registerEventBus(this);
+    }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void receiveEvent(EventBusEvent event) {
+        if (event == null || event.getEventId() != AppConstants.EVENT_ID_LOGIN) {
+            return;
+        }
+        try {
+            LoginResponse response = (LoginResponse) event.getData();
+            title.setText(response.getName() + "  登录成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBusUtil.unregisterEventBus(this);
     }
 }

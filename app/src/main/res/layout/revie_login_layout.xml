@@ -10,6 +10,7 @@
         android:id="@+id/account_area"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="200dp"
         cons:layout_constraintVertical_chainStyle="packed"
         cons:layout_constraintTop_toTopOf="parent"
         cons:layout_constraintBottom_toTopOf="@+id/passwrod_area"
@@ -49,7 +50,6 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         cons:layout_constraintTop_toBottomOf="@+id/account_area"
-        cons:layout_constraintBottom_toBottomOf="parent"
         />
 
     <TextView
@@ -81,4 +81,20 @@
         cons:layout_constraintLeft_toRightOf="@+id/title2"
         cons:layout_constraintRight_toRightOf="@+id/passwrod_area"
         cons:layout_constraintTop_toTopOf="@+id/passwrod_area" />
+
+    <TextView
+        android:id="@+id/login_btn"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:text="登录"
+        android:gravity="center"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:background="@color/colorPrimaryDark"
+        android:layout_marginTop="20dp"
+
+        cons:layout_constraintTop_toBottomOf="@+id/passwrod_area"
+        cons:layout_constraintLeft_toLeftOf="parent"
+        cons:layout_constraintRight_toRightOf="parent"
+        />
 </android.support.constraint.ConstraintLayout>
