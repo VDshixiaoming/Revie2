@@ -6,11 +6,20 @@
     android:layout_height="match_parent"
     android:clipToPadding="false">
 
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@mipmap/revie_ic_logo"
+        android:layout_marginBottom="50dp"
+        cons:layout_constraintBottom_toTopOf="@+id/account_area"
+        cons:layout_constraintLeft_toLeftOf="parent"
+        cons:layout_constraintRight_toRightOf="parent"
+        />
+
     <View
         android:id="@+id/account_area"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="200dp"
         cons:layout_constraintVertical_chainStyle="packed"
         cons:layout_constraintTop_toTopOf="parent"
         cons:layout_constraintBottom_toTopOf="@+id/passwrod_area"
@@ -50,6 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         cons:layout_constraintTop_toBottomOf="@+id/account_area"
+        cons:layout_constraintBottom_toTopOf="@+id/login_btn"
         />
 
     <TextView
@@ -94,6 +104,7 @@
         android:layout_marginTop="20dp"
 
         cons:layout_constraintTop_toBottomOf="@+id/passwrod_area"
+        cons:layout_constraintBottom_toBottomOf="parent"
         cons:layout_constraintLeft_toLeftOf="parent"
         cons:layout_constraintRight_toRightOf="parent"
         />

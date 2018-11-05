@@ -3,6 +3,7 @@ package com.application.sxm.revie.activity;
 
 import android.support.v7.app.ActionBar;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
@@ -100,4 +101,16 @@ public class WebViewActivity extends BaseActivity implements RevieWebView.WebTit
         }
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
